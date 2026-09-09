@@ -5,7 +5,7 @@
 
 ### 地类识别 (Land Cover Classification)
 - **耕地** (Cropland)
-  - 模型: Swin Transformer UPER
+  - 模型: Swin Transformer UPER、HRnet-OCR、segfomer
   - 数据集:
   - 状态: 规划中
   
