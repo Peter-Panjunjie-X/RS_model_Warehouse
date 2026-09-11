@@ -15,6 +15,7 @@
     |Twins-PCPVT-L-UPer|是一个基于 Twins-PCPVT-Large（PCPVT-L）Backbone 的语义分割网络，其中 Twins-PCPVT-L 是一种层级化 Vision Transformer，通过金字塔结构逐步降低特征分辨率、提升特征维度，并结合空间注意力机制提取不同尺度的视觉特征；UPerNet 则利用 PPM 和 FPN 对 Backbone 不同阶段的特征进行多尺度上下文融合，最终生成分割结果。整体属于 层级化 Transformer Backbone + 多尺度特征融合 + 解码预测 的语义分割架构。|
     |Twins-SVT-L-UPer|是一个基于 Twins-SVT-Large（SVT-L）Backbone 的语义分割网络，其中 Twins-SVT-L 采用层级化 Vision Transformer，通过 局部子窗口注意力（LSA） 捕获局部空间细节，并利用 全局子采样注意力（GSA） 建模更大范围的长距离依赖，在控制计算量的同时获得多尺度上下文特征；UPerNet 则通过 PPM 和 FPN 对不同阶段的特征进行多尺度融合，并恢复空间细节，最终输出像素级分割结果。整体属于 层级化 Transformer Backbone + 局部/全局注意力建模 + 多尺度特征融合 的语义分割架构。|
     |ViT-B16-LN_MLN-UPerNet|是一个基于 ViT-B/16（Vision Transformer Base，16×16 Patch）Backbone 的语义分割网络，其中 ViT-B/16 将输入图像划分为固定大小的 16×16 Patch，并通过 Transformer 的自注意力机制建立不同图像区域之间的全局关系；LN 表示在 ViT 特征处理中使用 Layer Normalization，MLN 则用于对 ViT 提取的特征进行进一步的归一化/特征变换，以适配后续分割任务；UPerNet 再利用多尺度特征融合结构对 Backbone 特征进行处理，最终生成像素级分割结果。整体属于 纯 Transformer Backbone + 特征归一化/变换 + 多尺度特征融合 的语义分割架构。 |
+    |segfomer-b5 | 是一个基于 层级化 Transformer Encoder 的语义分割网络，其中 MiT（Mix Transformer）Backbone 负责通过分层结构逐步提取不同尺度的视觉特征，并利用高效的自注意力机制建模全局上下文；SegFormer Decoder 则将不同阶段的多尺度特征进行统一维度映射、上采样和融合，最终生成像素级分割结果。整体属于 层级化 Transformer Backbone + 多尺度特征融合 + 轻量级解码器 的语义分割架构。
     
     
 
