@@ -6,6 +6,12 @@
 ### 地类识别 (Land Cover Classification)
 - **耕地** (Cropland)
   - 模型: Swin_Transformer_UPER、HRnet-OCR、segfomer、HRnet-uper
+    
+    |model|模型结构|
+    |:--------------|:------------------- |
+    |K-Net-UPerNet-Swin-L|是一个基于 Swin-L Backbone 的语义分割网络，其中 Swin-L 负责提取层级化视觉特征，UPerNet 通过 PPM 和 FPN 进行多尺度上下文特征融合，K-Net 则通过可学习 Kernel 与图像特征交互，并迭代更新 Kernel 来生成更加精细的分割 Mask。整体属于 Transformer Backbone + 多尺度特征融合 + Kernel 迭代预测的语义分割架构。 |
+
+
   - 数据集:2.1w张- 512×512影像- 重叠度10% - 标签占比>5% -  |  train-8.5 / test-1.5
   - 状态: 训练中
     
