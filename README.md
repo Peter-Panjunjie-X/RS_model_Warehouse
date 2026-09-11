@@ -5,11 +5,18 @@
 
 ### 地类识别 (Land Cover Classification)
 - **耕地** (Cropland)
-  - 模型: Swin_Transformer_UPER、HRnet-OCR、segfomer、HRnet-uper、twins_svt-l_uperhead
+  - 模型: Swin_Transformer_UPER、HRnet-OCR、segfomer、HRnet-uper、twins_svt-l_uperhead、vit-b16-ln_mln_upernet
     
     |model|模型结构|
     |:--------------|:------------------- |
     |K-Net-UPerNet-Swin-L|是一个基于 Swin-L Backbone 的语义分割网络，其中 Swin-L 负责提取层级化视觉特征，UPerNet 通过 PPM 和 FPN 进行多尺度上下文特征融合，K-Net 则通过可学习 Kernel 与图像特征交互，并迭代更新 Kernel 来生成更加精细的分割 Mask。整体属于 Transformer Backbone + 多尺度特征融合 + Kernel 迭代预测的语义分割架构。 |
+    |HRnet-uper | 是一个基于 HRNet-W48（HR48）Backbone 的语义分割网络，其中 HRNet-W48 通过并行维护不同分辨率的特征分支，并反复进行跨分辨率信息交互，在保持高分辨率空间信息的同时提取多尺度语义特征；UPerNet 则通过 PPM 和 FPN 对不同层级的特征进行多尺度上下文融合，最终生成像素级分割结果。整体属于 CNN 高分辨率 Backbone + 多尺度特征融合 + 解码预测 的语义分割架构。|
+    |HR48-OCR | 是一个基于 HRNet-W48（HR48）Backbone 的语义分割网络，其中 HRNet-W48 通过并行的多分辨率特征分支持续提取和融合高、低分辨率信息，保持较强的空间细节；OCR（Object Contextual Representation） 则根据初步分割结果聚合不同目标区域的上下文信息，再通过注意力机制将目标级上下文反馈到像素特征中，从而进一步增强像素分类能力。整体属于 CNN 高分辨率 Backbone + Object Context 上下文建模 + 注意力细化预测 的语义分割架构。|
+    |Twins-PCPVT-L-UPer|是一个基于 Twins-PCPVT-Large（PCPVT-L）Backbone 的语义分割网络，其中 Twins-PCPVT-L 是一种层级化 Vision Transformer，通过金字塔结构逐步降低特征分辨率、提升特征维度，并结合空间注意力机制提取不同尺度的视觉特征；UPerNet 则利用 PPM 和 FPN 对 Backbone 不同阶段的特征进行多尺度上下文融合，最终生成分割结果。整体属于 层级化 Transformer Backbone + 多尺度特征融合 + 解码预测 的语义分割架构。|
+    |Twins-SVT-L-UPer|是一个基于 Twins-SVT-Large（SVT-L）Backbone 的语义分割网络，其中 Twins-SVT-L 采用层级化 Vision Transformer，通过 局部子窗口注意力（LSA） 捕获局部空间细节，并利用 全局子采样注意力（GSA） 建模更大范围的长距离依赖，在控制计算量的同时获得多尺度上下文特征；UPerNet 则通过 PPM 和 FPN 对不同阶段的特征进行多尺度融合，并恢复空间细节，最终输出像素级分割结果。整体属于 层级化 Transformer Backbone + 局部/全局注意力建模 + 多尺度特征融合 的语义分割架构。|
+    |ViT-B16-LN_MLN-UPerNet|是一个基于 ViT-B/16（Vision Transformer Base，16×16 Patch）Backbone 的语义分割网络，其中 ViT-B/16 将输入图像划分为固定大小的 16×16 Patch，并通过 Transformer 的自注意力机制建立不同图像区域之间的全局关系；LN 表示在 ViT 特征处理中使用 Layer Normalization，MLN 则用于对 ViT 提取的特征进行进一步的归一化/特征变换，以适配后续分割任务；UPerNet 再利用多尺度特征融合结构对 Backbone 特征进行处理，最终生成像素级分割结果。整体属于 纯 Transformer Backbone + 特征归一化/变换 + 多尺度特征融合 的语义分割架构。 |
+    
+    
 
 
   - 数据集:2.1w张- 512×512影像- 重叠度10% - 标签占比>5% -  |  train-8.5 / test-1.5
@@ -22,8 +29,8 @@
     |segfomer-b5|81.07|90.77 |  90.8  |   90.82   | 90.77  |
     |HRnet-uper|76.65| 88.5 | 88.38  |   88.27   |  88.5  |
     | twins_svt-l_uperhead|0000| 0000 |0000  |0000 |0000|
-   
-  <img width="306" height="636" alt="image" src="https://github.com/user-attachments/assets/e2fd4eaf-e563-4c02-b4b4-52ca4d6676f4" />
+    | twins_pcpvt-l_uperhead|0000| 0000 |0000  |0000 |0000|
+    | vit-b16-ln_mln_upernet|0000| 0000 |0000  |0000 |0000|
 
 - **道路** (Road)
   - 模型: SegFormer
