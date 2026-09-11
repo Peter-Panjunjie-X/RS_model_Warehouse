@@ -5,7 +5,7 @@
 
 ### 地类识别 (Land Cover Classification)
 - **耕地** (Cropland)
-  - 模型: Swin_Transformer_UPER、HRnet-OCR、segfomer、HRnet-uper
+  - 模型: Swin_Transformer_UPER、HRnet-OCR、segfomer、HRnet-uper、twins_svt-l_uperhead
     
     |model|模型结构|
     |:--------------|:------------------- |
@@ -21,8 +21,10 @@
     |HRnet-OCR|79.27|89.21 | 89.75  |  90.29   | 89.21  |
     |segfomer-b5|81.07|90.77 |  90.8  |   90.82   | 90.77  |
     |HRnet-uper|76.65| 88.5 | 88.38  |   88.27   |  88.5  |
+    | twins_svt-l_uperhead|0000| 0000 |0000  |0000 |0000|
    
-  
+  <img width="306" height="636" alt="image" src="https://github.com/user-attachments/assets/e2fd4eaf-e563-4c02-b4b4-52ca4d6676f4" />
+
 - **道路** (Road)
   - 模型: SegFormer
   - 状态: 规划中
